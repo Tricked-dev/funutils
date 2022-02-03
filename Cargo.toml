@@ -1,0 +1,30 @@
+[package]
+name = "funutils"
+description = "Various commandline tools but written in rust!"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "^3", features = ["cargo"] }
+figlet-rs = "0.1.3"
+rand = "0.8.4"
+rust-embed = "6.3.0"
+qrrs = "0.1.8"
+lolcrab = "0.1.3"
+rprompt = "1.0.5"
+
+
+[[bin]]
+name = "cowsay"
+path = "src/bin/cowsay.rs"
+[[bin]]
+name = "cowthink"
+path = "src/bin/cowsay.rs"
+[[bin]]
+name = "lolcrab"
+path = "src/bin/lolcat.rs"
+[[bin]]
+name = "lolcat"
+path = "src/bin/lolcat.rs"
