@@ -1,5 +1,3 @@
-#![warn(clippy::pedantic, clippy::nursery)]
-
 use clap::Parser;
 use lolcrab::{Rainbow, RainbowCmd};
 use std::{
@@ -7,10 +5,6 @@ use std::{
     io::{self, BufReader},
     path::PathBuf,
 };
-
-#[cfg(feature = "mimalloc")]
-#[global_allocator]
-static GLOBAL: mimalloc::MiMalloc = mimalloc::MiMalloc;
 
 #[derive(Parser)]
 #[clap(name = "lolcrab", version, about)]
