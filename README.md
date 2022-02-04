@@ -15,6 +15,10 @@ Inspired by https://github.com/uutils/coreutils
 - zalgo
 - parrot
 
+Parrot in your terminal!
+
+![](media/PARROT.gif)
+
 ## TODO
 
 - SL
@@ -24,8 +28,6 @@ Inspired by https://github.com/uutils/coreutils
 - cmatrix
 
 parrot command:
-
-![](media/XvPbtgl.png)
 
 ## Credits - license information
 

@@ -2,7 +2,7 @@ use clap::{App, Arg};
 use std::io;
 
 fn main() {
-    let matches = App::new("figlet")
+    let matches = App::new("yes")
         .version("v0.1.0")
         .author("Tricked-dev <tricked@tricked.pro>")
         .arg(Arg::new("MESSAGE").help("yes").multiple_values(true))

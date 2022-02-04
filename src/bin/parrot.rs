@@ -1,21 +1,32 @@
+use rand::{prelude::IteratorRandom, thread_rng};
 use rust_embed::RustEmbed;
-use std::io;
-use std::io::{stdout, Write};
-use std::{thread, time};
+use std::{
+    collections::HashSet,
+    io::{stdout, Write},
+    thread, time,
+};
 
 #[derive(RustEmbed)]
 #[folder = "src/parrots/"]
-#[exclude = "*.txt"]
+#[exclude = "*.parrot"]
 struct Assets;
 
-fn list_cows() -> Vec<String> {
+fn get_parrots() -> HashSet<String> {
     Assets::iter()
-        .map(|x| x.split("/").last().unwrap().replace(".png.txt", ""))
-        .collect::<Vec<String>>()
+        .map(|x| x.to_owned().split("/").next().unwrap().to_owned())
+        .collect::<_>()
 }
 
 fn main() {
+    // let parrots = ;
+    let mut rng = thread_rng();
+    let parrot = get_parrots()
+        .into_iter()
+        .choose(&mut rng)
+        .expect("Failed to pick a parrot")
+        .to_string();
     let parrots = Assets::iter()
+        .filter(|parr| parr.contains(&parrot))
         .map(|x| {
             std::str::from_utf8(&Assets::get(&x).unwrap().data)
                 .unwrap()
@@ -24,8 +35,11 @@ fn main() {
         .collect::<Vec<String>>();
     loop {
         for parrot in &parrots {
-            print!("{}", parrot);
+            stdout().write_all(parrot.as_bytes()).unwrap();
             thread::sleep(time::Duration::from_millis(60));
+            stdout().flush().unwrap();
+            #[cfg(not(target_os = "windows"))]
+            print!("\x1B[2J\x1B[1;1H");
         }
     }
 }
