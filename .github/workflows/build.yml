@@ -2,9 +2,9 @@ name: Build and upload artifacts.
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 env:
   CARGO_TERM_COLOR: always
@@ -33,6 +33,7 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Build
+        continue-on-error: true
         run: make out
 
       - uses: actions/upload-artifact@v2
