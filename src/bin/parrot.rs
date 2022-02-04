@@ -26,7 +26,7 @@ fn main() {
         .expect("Failed to pick a parrot")
         .to_string();
     let parrots = Assets::iter()
-        .filter(|parr| parr.contains(&parrot))
+        .filter(|parr| parr.contains(&format!("{}/", parrot)))
         .map(|x| {
             std::str::from_utf8(&Assets::get(&x).unwrap().data)
                 .unwrap()
