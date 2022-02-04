@@ -11,6 +11,7 @@ out:
 	cp target/${target}/release/* build/ &> /dev/null; \
 	rm -rf build/*.*; \
 	rm -rf build/*.rlib; \
+	rm -rf build/*.d; \
 	strip build/* ; \
 	upx --best --lzma build/*
 	
