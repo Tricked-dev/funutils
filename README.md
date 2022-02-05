@@ -36,10 +36,6 @@ Parrot in your terminal!
 - aafire
 - cmatrix
 
-parrot command:
-
-## Credits - license information
+## License
 
 This project is licensed under the apache-2 license
-
-- https://github.com/msmith491/rust-cowsay - MIT
