@@ -8,7 +8,7 @@ use std::{
 
 #[derive(RustEmbed)]
 #[folder = "src/parrots/"]
-#[exclude = "*.parrot"]
+#[exclude = "*.par"]
 struct Assets;
 
 fn get_parrots() -> HashSet<String> {
@@ -36,7 +36,7 @@ fn main() {
     loop {
         for parrot in &parrots {
             stdout().write_all(parrot.as_bytes()).unwrap();
-            thread::sleep(time::Duration::from_millis(60));
+            thread::sleep(time::Duration::from_millis(90));
             stdout().flush().unwrap();
             #[cfg(not(target_os = "windows"))]
             print!("\x1B[2J\x1B[1;1H");
